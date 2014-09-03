@@ -8,7 +8,10 @@ def find_config_fragments(d):
     sources=src_patches(d, True)
     sources_list=[]
     for s in sources:
-        if s.endswith('.cfg'):
+        if ('defconfig' in s):
+            sources_list.append(s)
+    for s in sources:
+        if (s.endswith('.cfg') and not('defconfig' in s)):
             sources_list.append(s)
     return sources_list
 
